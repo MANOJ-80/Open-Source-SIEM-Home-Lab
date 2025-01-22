@@ -136,4 +136,4 @@ sudo apt install rsyslog
 Contributions are welcome! If you have suggestions, bug fixes, or additional features, feel free to submit a pull request.
 
 ### License
-This project is licensed under the MIT License.
+This project is licensed under the MIT [LICENSE](LICENSE).
