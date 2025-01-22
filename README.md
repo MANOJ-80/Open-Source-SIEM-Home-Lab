@@ -48,3 +48,84 @@ Follow the steps below to set up the SIEM home lab:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
+```
+### Step 3: Install Elastic Stack
+## Install Elasticsearch
+
+1. Add the Elasticsearch GPG key and repository.
+2. Install Elasticsearch:
+
+```bash
+sudo apt install elasticsearch -y
+```
+3. Configure Elasticsearch by editing `/etc/elasticsearch/elasticsearch.yml`.
+4. Start and enable Elasticsearch:
+
+```bash
+sudo systemctl start elasticsearch
+sudo systemctl enable elasticsearch
+```
+### Install Logstash
+
+1. Install Logstash:
+```bash
+sudo apt install logstash -y
+```
+2. Create a pipeline configuration file in `/etc/logstash/conf.d/`.
+3. Start and enable Logstash:
+
+```bash
+sudo systemctl start logstash
+sudo systemctl enable logstash
+```
+### Install Kibana
+
+1. Install Kibana:
+
+```bash
+sudo apt install kibana -y
+```
+2. Configure Kibana in `/etc/kibana/kibana.yml`.
+3. Start and enable Kibana:
+
+```bash
+sudo systemctl start kibana
+sudo systemctl enable kibana
+```
+4. Access Kibana at http://<vm_ip>:5601.
+
+### Install Filebeat
+
+1. Install Filebeat:
+
+```bash
+sudo apt install filebeat -y
+```
+2. Configure Filebeat to send logs to Logstash.
+3. Start and enable Filebeat:
+
+```bash
+sudo systemctl start filebeat
+sudo systemctl enable filebeat
+```
+### Step 4: Integrate Suricata
+
+Install Suricata:
+
+bashCopysudo apt install suricata -y
+
+Configure Suricata to monitor network traffic and output logs to Filebeat.
+
+Step 5: Generate Logs
+
+Use the secondary VM to generate log traffic:
+
+bashCopysudo apt install rsyslog
+
+Configure rsyslog to forward logs to the ELK Stack VM.
+
+Step 6: Test and Analyze Logs
+
+Open Kibana and navigate to the "Discover" tab.
+Verify that logs are indexed correctly in Elasticsearch.
+Create custom dashboards and visualizations for your logs.
