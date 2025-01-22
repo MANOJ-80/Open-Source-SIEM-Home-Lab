@@ -50,7 +50,7 @@ Follow the steps below to set up the SIEM home lab:
 sudo apt update && sudo apt upgrade -y
 ```
 ### Step 3: Install Elastic Stack
-## Install Elasticsearch
+### Install Elasticsearch
 
 1. Add the Elasticsearch GPG key and repository.
 2. Install Elasticsearch:
@@ -110,22 +110,30 @@ sudo systemctl enable filebeat
 ```
 ### Step 4: Integrate Suricata
 
-Install Suricata:
+1.Install Suricata:
 
-bashCopysudo apt install suricata -y
+```bash
+sudo apt install suricata -y
+```
+2. Configure Suricata to monitor network traffic and output logs to Filebeat.
 
-Configure Suricata to monitor network traffic and output logs to Filebeat.
+### Step 5: Generate Logs
 
-Step 5: Generate Logs
+1. Use the secondary VM to generate log traffic:
 
-Use the secondary VM to generate log traffic:
+```bash
+sudo apt install rsyslog
+```
+2. Configure rsyslog to forward logs to the ELK Stack VM.
 
-bashCopysudo apt install rsyslog
+### Step 6: Test and Analyze Logs
 
-Configure rsyslog to forward logs to the ELK Stack VM.
+1. Open Kibana and navigate to the "Discover" tab.
+2. Verify that logs are indexed correctly in Elasticsearch.
+3. Create custom dashboards and visualizations for your logs.
 
-Step 6: Test and Analyze Logs
+### Contributing   
+Contributions are welcome! If you have suggestions, bug fixes, or additional features, feel free to submit a pull request.
 
-Open Kibana and navigate to the "Discover" tab.
-Verify that logs are indexed correctly in Elasticsearch.
-Create custom dashboards and visualizations for your logs.
+### License
+This project is licensed under the MIT License.
